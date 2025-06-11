@@ -53,4 +53,5 @@ jobs:
           DB_PORT: 5432
           JWT_SECRET: testsecret
           JWT_EXPIRES_IN: 1h
-        run: npm test
+        run: npx jest
+
