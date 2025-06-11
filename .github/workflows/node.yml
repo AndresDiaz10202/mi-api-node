@@ -44,6 +44,9 @@ jobs:
         run: |
           PGPASSWORD=postgres psql -h localhost -U postgres -d mi_api -c "CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, username VARCHAR(100), password VARCHAR(100));"
 
+      - name: Ensure jest is executable
+        run: chmod +x ./node_modules/.bin/jest
+
       - name: Run tests
         env:
           DB_HOST: localhost
@@ -53,6 +56,4 @@ jobs:
           DB_PORT: 5432
           JWT_SECRET: testsecret
           JWT_EXPIRES_IN: 1h
-        run: ./node_modules/.bin/jest
-
-
+        run: npx --no-install jest
